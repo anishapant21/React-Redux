@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 class App extends React.Component {
 
@@ -25,23 +26,37 @@ class App extends React.Component {
 
     }
 
+
+    //render helper when we have to use  conditional statements
+    renderContent(){
+
+        if (this.state.errorMessage && !this.state.lat){
+            return (
+                <div> Error : {this.state.errorMessage}</div>
+            );
+            }
+         
+         if (!this.state.errorMessage && this.state.lat){
+             return <SeasonDisplay lat={this.state.lat}/> //passing as props to the child componenet
+                 
+             
+             }
+         return <Spinner message="Please accept location request"/>;
+         }
+
+    
+
     //React says we have to render
     render(){
+        return (
+            <div className= "border red">
+                {this.renderContent()}
+            </div>
+        );
         
-       if (this.state.errorMessage && !this.state.lat){
-           return (
-               <div> Error : {this.state.errorMessage}</div>
-           );
-           }
-        
-        if (!this.state.errorMessage && this.state.lat){
-            return <SeasonDisplay lat={this.state.lat}/> //passing as props to the child componenet
-                
-            
-            }
-        return <div> Loading...</div>;
-        }
+       
        }
+    }
 
     
 

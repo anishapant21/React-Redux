@@ -1,13 +1,15 @@
+import './ImageList.css';
 import React from 'react';
+import ImageCard from './ImageCard';
 
 
 //passing props from parent component
 const ImageList = (props) =>{
     const images= props.images.map(image => {
-        return <img alt={image.description} key={image.id} src={image.urls.regular} /> //accesing the image url, the regular one
+        return  <ImageCard key={image.id} image={image}/>//accesing the image url, the regular one
     });
     return (
-        <div>{images}</div>
+        <div className="image-list">{images}</div>
 
     )
 }

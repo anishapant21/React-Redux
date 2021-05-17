@@ -5,6 +5,7 @@ class SearchBar extends React.Component {
 
 
     //to prevent from refersing the page and going back to start after submitting i.e clicking 'enter'
+    //to bind this -- have appropriate value of this
     onFormSubmit= event => {
         event.preventDefault();
 

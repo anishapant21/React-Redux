@@ -2,7 +2,9 @@ import React, { useRef, useState } from 'react';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
-import Translate from './components/Translate'
+import Translate from './components/Translate';
+import Route from './components/Route';
+import Header from './components/Header';
 
 //creating items for Accordion
 const items = [
@@ -39,7 +41,7 @@ const options = [
 
 export default () => {
     //state for dropdown
-    //const [selected, setSelected] = useState(options[0])
+    const [selected, setSelected] = useState(options[0])
     //For toggle button
     //const [showDropdown, setShowDropdown] = useState(true);
     return (
@@ -48,7 +50,25 @@ export default () => {
             {/*<Accordion items = {items}/> */}
             {/*<Search /> */}
 
-            <Translate />
+                    <Header />
+                   <Route path="/">
+                       <Accordion items={items} />
+                   </Route>
+                   <Route path="/list">
+                       <Search />
+                   </Route>
+                   <Route path ="/dropdown">
+                       <Dropdown
+                       label="select a color"
+                       options = {options}
+                       selected={selected}
+                       onSelectedChange={setSelected}
+
+                       />
+                   </Route>
+                   <Route path="/translate">
+                       <Translate />
+                   </Route>
            
         </div>
     );

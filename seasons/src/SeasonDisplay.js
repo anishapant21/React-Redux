@@ -1,7 +1,6 @@
 import './seasonDisplay.css';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 //configuration object
 const seasonConfig = {
@@ -24,8 +23,8 @@ const getSeason =(lat, month) =>{
 
 }
 
-const SeasonDisplay = (props) =>{
-    const season=getSeason(props.lat, new Date(). getMonth());
+const SeasonDisplay = (props) => {
+    const season=getSeason(props.lat, new Date().getMonth());
     const {text, iconName } = seasonConfig[season]; //{text, iconName}
 
     //use {} to put js logic on jsx
